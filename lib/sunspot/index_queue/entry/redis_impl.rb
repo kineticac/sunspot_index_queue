@@ -14,10 +14,7 @@ module Sunspot
         attr_accessor :record_id, :record_class_name, :is_delete, :run_at, :priority, :error, :attempts, :is_locked, :duplicate
 
         class << self
-          def connection= (*args)
-            host, port = *args
-            host ||= 'localhost'
-            port ||= 6379
+          def connection= (host = 'localhost', port = 6379)
             @connection = Redis.new(:host => host, :port => port)
           end
 
